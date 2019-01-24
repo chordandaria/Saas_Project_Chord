@@ -25,11 +25,6 @@ class IndexActivity : BaseActivity() {
         var fg_info=InfoFragment()
         viewModel = ViewModelProviders.of(this).get(IndexViewModel::class.java)
         viewModel!!.initViewModel(this)
-        if (ShareHelper(this).checkLogined()) {
-            startActivity(Intent(this@IndexActivity,LoginActivity::class.java))
-        }else {
-            viewModel!!.requestIndex()
-        }
         fragments.add(fg_index)
         fragments.add(fg_info)
         titles.add("首页")
@@ -37,6 +32,11 @@ class IndexActivity : BaseActivity() {
         mAdapter= IndexViewPagerAdapter(supportFragmentManager,fragments,titles)
         vp_index.adapter=mAdapter
         tl_index.setupWithViewPager(vp_index)
+        if (ShareHelper(this).checkLogined()) {
+            startActivity(Intent(this@IndexActivity,LoginActivity::class.java))
+        }else {
+            viewModel!!.requestIndex()
+        }
 
 
     }
