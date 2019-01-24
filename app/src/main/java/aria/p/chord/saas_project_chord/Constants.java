@@ -10,7 +10,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Constants {
-    public static String BASEURL="http://dev.gjy.shangbanzugroup.com/";
+    public static final String BASEURL="http://dev.gjy.shangbanzugroup.com/";
+    public static final String GETHOMECONFIGS="api/common/configs/home";
 
 
 

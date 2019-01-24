@@ -3,31 +3,31 @@ package aria.p.chord.saas_project_chord.bean;
 import com.google.gson.annotations.SerializedName;
 
 public class IndexBean {
-    @SerializedName("config")private IndexConfigBean config;
-    @SerializedName("code")private String code;
-    @SerializedName("message")private String message;
+    @SerializedName("status")private int status;
+    @SerializedName("success")private boolean success;
+    @SerializedName(value = "data",alternate = "error")private IndexDataBean data;
 
-    public IndexConfigBean getConfig() {
-        return config;
+    public int getStatus() {
+        return status;
     }
 
-    public void setConfig(IndexConfigBean config) {
-        this.config = config;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getCode() {
-        return code;
+    public boolean isSuccess() {
+        return success;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
-    public String getMessage() {
-        return message;
+    public IndexDataBean getData() {
+        return data;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setData(IndexDataBean data) {
+        this.data = data;
     }
 }

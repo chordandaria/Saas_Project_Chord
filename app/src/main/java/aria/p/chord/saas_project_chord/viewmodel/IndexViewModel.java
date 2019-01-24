@@ -6,9 +6,16 @@ import android.content.Context;
 
 import java.util.LinkedList;
 
-import aria.p.chord.saas_project_chord.bean.IndexConfigBean;
+import aria.p.chord.myutilslibrary.ShareHelper;
+import aria.p.chord.saas_project_chord.bean.IndexBean;
 import aria.p.chord.saas_project_chord.bean.SectionsBean;
 import aria.p.chord.saas_project_chord.bean.SlidersBean;
+import aria.p.chord.saas_project_chord.interfaces.GetIndexData_Interface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static aria.p.chord.saas_project_chord.Constants.retrofit;
 
 public class IndexViewModel extends ViewModel {
     private Context mContext;
@@ -32,6 +39,23 @@ public class IndexViewModel extends ViewModel {
     }
 
     public void requestIndex() {
+        GetIndexData_Interface request=retrofit.create(GetIndexData_Interface.class);
+        Call<IndexBean> call=request.getIndex(new ShareHelper(mContext).getAuth());
+        call.enqueue(new Callback<IndexBean>() {
+            @Override
+            public void onResponse(Call<IndexBean> call, Response<IndexBean> response) {
+                if (response.body()!=null) {
+                    if (response.body().isSuccess()&&response.body().getStatus()==200&&response.body().getData()!=null){
+                        sliders.setValue(response.body().getData().getConfig().getSliders());
+                        sections.setValue(response.body().getData().getConfig().getSections());
+                    }
+                }
+            }
 
+            @Override
+            public void onFailure(Call<IndexBean> call, Throwable t) {
+
+            }
+        });
     }
 }
