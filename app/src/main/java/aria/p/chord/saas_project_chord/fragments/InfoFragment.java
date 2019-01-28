@@ -31,7 +31,7 @@ public class InfoFragment extends Fragment {
         viewModel.getInfoData().observe(this, new Observer<InfoDataBean>() {
             @Override
             public void onChanged(@Nullable InfoDataBean infoDataBean) {
-                
+
             }
         });
         return view;
