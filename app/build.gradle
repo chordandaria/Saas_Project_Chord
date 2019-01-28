@@ -42,4 +42,10 @@ dependencies {
 //    其他模块依赖
     implementation project(':Group_Event_Module')
     implementation project(':myutilslibrary')
+//  控件绑定
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+//  图片加载
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
 }

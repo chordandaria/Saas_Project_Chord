@@ -3,14 +3,19 @@ package aria.p.chord.saas_project_chord.viewmodel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
+import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import aria.p.chord.myutilslibrary.ShareHelper;
 import aria.p.chord.saas_project_chord.bean.IndexBean;
+import aria.p.chord.saas_project_chord.bean.InfoBean;
+import aria.p.chord.saas_project_chord.bean.InfoDataBean;
 import aria.p.chord.saas_project_chord.bean.SectionsBean;
 import aria.p.chord.saas_project_chord.bean.SlidersBean;
 import aria.p.chord.saas_project_chord.interfaces.GetIndexData_Interface;
+import aria.p.chord.saas_project_chord.interfaces.GetInfo_Interface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,22 +25,28 @@ import static aria.p.chord.saas_project_chord.Constants.retrofit;
 public class IndexViewModel extends ViewModel {
     private Context mContext;
 
-    private MutableLiveData<LinkedList<SlidersBean>> sliders=new MutableLiveData<LinkedList<SlidersBean>>();
+    private MutableLiveData<ArrayList<SlidersBean>> sliders=new MutableLiveData<ArrayList<SlidersBean>>();
 
-    private MutableLiveData<LinkedList<SectionsBean>> sections=new MutableLiveData<LinkedList<SectionsBean>>();
+    private MutableLiveData<ArrayList<SectionsBean>> sections=new MutableLiveData<ArrayList<SectionsBean>>();
 
-    public MutableLiveData<LinkedList<SlidersBean>> getSliders() {
+    private MutableLiveData<InfoDataBean> infoData=new MutableLiveData<InfoDataBean>();
+
+    public MutableLiveData<ArrayList<SlidersBean>> getSliders() {
         return sliders;
     }
 
-    public MutableLiveData<LinkedList<SectionsBean>> getSections() {
+    public MutableLiveData<ArrayList<SectionsBean>> getSections() {
         return sections;
+    }
+
+    public MutableLiveData<InfoDataBean> getInfoData() {
+        return infoData;
     }
 
     public void initViewModel(Context mContext) {
         this.mContext=mContext;
-        sliders.setValue(new LinkedList<SlidersBean>());
-        sections.setValue(new LinkedList<SectionsBean>());
+        sliders.setValue(new ArrayList<SlidersBean>());
+        sections.setValue(new ArrayList<SectionsBean>());
     }
 
     public void requestIndex() {
@@ -48,12 +59,33 @@ public class IndexViewModel extends ViewModel {
                     if (response.body().isSuccess()&&response.body().getStatus()==200&&response.body().getData()!=null){
                         sliders.setValue(response.body().getData().getConfig().getSliders());
                         sections.setValue(response.body().getData().getConfig().getSections());
+                        Log.e("response========",String.valueOf(response.body().getData().getConfig().getSections().size()));
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<IndexBean> call, Throwable t) {
+                Log.e("response========",t.toString());
+            }
+        });
+    }
+
+    public void requestInfo(){
+        GetInfo_Interface request=retrofit.create(GetInfo_Interface.class);
+        Call<InfoBean> call=request.getInfo(new ShareHelper(mContext).getAuth());
+        call.enqueue(new Callback<InfoBean>() {
+            @Override
+            public void onResponse(Call<InfoBean> call, Response<InfoBean> response) {
+                if (response.body()!=null){
+                    if (response.body().isSuccess()&&response.body().getStatus()==200){
+                        infoData.setValue(response.body().getData());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<InfoBean> call, Throwable t) {
 
             }
         });

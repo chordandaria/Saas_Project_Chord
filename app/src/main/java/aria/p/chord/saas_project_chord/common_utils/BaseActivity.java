@@ -19,8 +19,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         actionBar=getSupportActionBar();
-        UltimateBar.newImmersionBuilder()
+        UltimateBar.newColorBuilder()
                 .applyNav(false)
+                .statusColor(getColor(R.color.red_holo))
                 .build(this)
                 .apply();
         actionBar.setBackgroundDrawable(getDrawable(R.drawable.my_actionbar));

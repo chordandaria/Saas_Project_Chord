@@ -2,7 +2,7 @@ package aria.p.chord.saas_project_chord.bean;
 
 import com.google.gson.annotations.SerializedName;
 
-class IconsBean {
+public class IconsBean {
     @SerializedName("type")private String type;
     @SerializedName("image")private String image;
     @SerializedName("title")private String title;

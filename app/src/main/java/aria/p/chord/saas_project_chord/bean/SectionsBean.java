@@ -2,12 +2,13 @@ package aria.p.chord.saas_project_chord.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class SectionsBean {
     @SerializedName("type")private String type;
     @SerializedName("title")private String title;
-    @SerializedName("icons")private LinkedList<IconsBean> icons;
+    @SerializedName("icons")private ArrayList<IconsBean> icons;
     @SerializedName("image")private String image;
     @SerializedName("link")private LinkBean link;
 
@@ -27,11 +28,11 @@ public class SectionsBean {
         this.title = title;
     }
 
-    public LinkedList<IconsBean> getIcons() {
+    public ArrayList<IconsBean> getIcons() {
         return icons;
     }
 
-    public void setIcons(LinkedList<IconsBean> icons) {
+    public void setIcons(ArrayList<IconsBean> icons) {
         this.icons = icons;
     }
 

@@ -127,7 +127,7 @@ public class ShareHelper {
     public boolean checkLogined()
     {
         SharedPreferences sp=mContext.getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
-        String auth=sp.getString("auth","");;
+        String auth=sp.getString("auth","");
         if (auth.equals(""))
         {
             return false;

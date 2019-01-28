@@ -13,6 +13,7 @@ public class Constants {
     public static final String BASEURL="http://dev.gjy.shangbanzugroup.com/";
     public static final String GETHOMECONFIGS="api/common/configs/home";
     public static final String LOGIN="api/passport/login";
+    public static final String GETINFO="api/usercenter/info";
 
 
 
