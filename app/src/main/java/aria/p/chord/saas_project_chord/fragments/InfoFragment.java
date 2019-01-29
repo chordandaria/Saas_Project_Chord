@@ -9,12 +9,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import aria.p.chord.saas_project_chord.R;
 import aria.p.chord.saas_project_chord.bean.InfoDataBean;
 import aria.p.chord.saas_project_chord.viewmodel.IndexViewModel;
+import butterknife.BindView;
 
 public class InfoFragment extends Fragment {
+    @BindView(R.id.tv_username)
+    TextView username;
+    @BindView(R.id.tv_department)
+    TextView department;
 
     private IndexViewModel viewModel;
 
@@ -31,7 +37,7 @@ public class InfoFragment extends Fragment {
         viewModel.getInfoData().observe(this, new Observer<InfoDataBean>() {
             @Override
             public void onChanged(@Nullable InfoDataBean infoDataBean) {
-
+                
             }
         });
         return view;
