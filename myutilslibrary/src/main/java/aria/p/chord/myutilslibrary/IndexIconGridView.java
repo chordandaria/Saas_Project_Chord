@@ -1,4 +1,4 @@
-package aria.p.chord.saas_project_chord.common_utils;
+package aria.p.chord.myutilslibrary;
 
 import android.content.Context;
 import android.util.AttributeSet;

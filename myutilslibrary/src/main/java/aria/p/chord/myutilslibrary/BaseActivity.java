@@ -1,20 +1,19 @@
-package aria.p.chord.saas_project_chord.common_utils;
+package aria.p.chord.myutilslibrary;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.zackratos.ultimatebar.UltimateBar;
-import aria.p.chord.saas_project_chord.R;
+import aria.p.chord.myutilslibrary.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
-    private  android.support.v7.app.ActionBar actionBar;
+    private  ActionBar actionBar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +40,28 @@ public abstract class BaseActivity extends AppCompatActivity {
         backBtn.setVisibility(View.VISIBLE);
         backBtn.setOnClickListener(listener);
     }
+    public void setBackButton() {
+        ImageView backBtn=actionBar.getCustomView().findViewById(R.id.iv_back);
+        backBtn.setVisibility(View.VISIBLE);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                commonDestroy();
+            }
+        });
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
+    private void commonDestroy(){
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        commonDestroy();
+    }
 }

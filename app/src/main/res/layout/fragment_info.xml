@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-            <LinearLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -35,7 +35,7 @@
                     android:textColor="@color/withe"
                     android:textSize="15sp"
                     android:visibility="gone"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_marginRight="20dp" />
             </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:paddingRight="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:paddingRight="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,7 +128,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:paddingRight="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -147,7 +150,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:paddingRight="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -168,7 +172,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:paddingRight="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -189,7 +194,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:paddingRight="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -210,7 +216,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:paddingRight="15dp"/>
         </LinearLayout>
 
     </LinearLayout>

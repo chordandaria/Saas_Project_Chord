@@ -10,11 +10,11 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         />
-    <aria.p.chord.saas_project_chord.common_utils.IndexIconGridView
+    <aria.p.chord.myutilslibrary.IndexIconGridView
         android:id="@+id/gv_icons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3"
-        ></aria.p.chord.saas_project_chord.common_utils.IndexIconGridView>
+        ></aria.p.chord.myutilslibrary.IndexIconGridView>
 
 </LinearLayout>

@@ -2,27 +2,23 @@ package aria.p.chord.saas_project_chord.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import aria.p.chord.group_event_module.GroupEventActivity;
+import aria.p.chord.myutilslibrary.IndexIconGridView;
 import aria.p.chord.saas_project_chord.R;
 import aria.p.chord.saas_project_chord.bean.SectionsBean;
-import aria.p.chord.saas_project_chord.common_utils.IndexIconGridView;
 
 public class IndexFragmentAdapter extends RecyclerView.Adapter {
     private ArrayList<SectionsBean> mData;
@@ -110,7 +106,7 @@ public class IndexFragmentAdapter extends RecyclerView.Adapter {
     }
 
     public void goToFunctions(String id) {
-//        Intent intent = null;
+        Intent intent = null;
 //        if (!TextUtils.isEmpty(params) && params.indexOf("id=") == 0) {
 //            String[] str = params.split("=");
 //            switch (id) {
@@ -124,12 +120,11 @@ public class IndexFragmentAdapter extends RecyclerView.Adapter {
 //                    break;
 //            }
 //        } else {
-//            switch (id) {
-//                case "reserve":
-//                    intent = new Intent(Index.this, EventMain.class);
-//                    intent.putExtra("type", 0);
-//                    intent.putExtra("d_type", "reserve");
-//                    break;
+            switch (id) {
+                case "reserve":
+                    intent = new Intent(mContext,GroupEventActivity.class);
+//                    intent.putExtra("id", id);
+                    break;
 //                case "exam":
 //                    intent = new Intent(Index.this, EventMain.class);
 //                    intent.putExtra("type", 1);
@@ -163,11 +158,10 @@ public class IndexFragmentAdapter extends RecyclerView.Adapter {
 //                default:
 //                    Toast.makeText(Index.this, "功能正在开发中......", Toast.LENGTH_SHORT).show();
 //                    break;
-//            }
+            }
 //        }
-//        if (intent != null) {
-//            startActivity(intent);
-//            overridePendingTransition(R.anim.slide_right_in, R.anim.slide_right_out);
-//        }
+        if (intent != null) {
+            mContext.startActivity(intent);
+        }
     }
     }
