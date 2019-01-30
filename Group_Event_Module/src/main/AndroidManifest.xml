@@ -3,7 +3,8 @@
     package="aria.p.chord.group_event_module">
 
     <application>
-        <activity android:name=".GroupEventActivity"></activity>
+        <activity android:name=".GroupEventActivity" />
+        <activity android:name=".activitices.EventInfoActivity"></activity>
     </application>
 
 </manifest>

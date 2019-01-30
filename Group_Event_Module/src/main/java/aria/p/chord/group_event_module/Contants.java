@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Contants {
     public static final String BASEURL="http://dev.gjy.shangbanzugroup.com/";
     public static final String GETEVENTLIST="api/gonghui/reserves";
+    public static final String GETEVENTINFO="api/gonghui/reserves/ex/{reserve}";
     //    实现当前工程内只有一个retrofit实例
     public static final OkHttpClient client=new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS).
             readTimeout(30,TimeUnit.SECONDS).writeTimeout(15,TimeUnit.SECONDS).build();

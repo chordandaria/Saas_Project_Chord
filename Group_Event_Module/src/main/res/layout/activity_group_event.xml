@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".GroupEventActivity"
     android:orientation="vertical">
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    android:id="@+id/sr_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,19 +18,19 @@
             android:background="@color/transparent"
             android:layout_height="wrap_content">
             <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:orientation="vertical"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:layout_scrollFlags="scroll">-->
-                <!--<com.youth.banner.Banner-->
-                    <!--android:id="@+id/bn_event"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="170dp"-->
-                    <!--app:indicator_width="0dp"-->
-                    <!--app:indicator_height="0dp"-->
-                    <!--app:scroll_time="500"-->
-                    <!--app:title_height="30dp"-->
-                    <!--app:layout_scrollFlags="scroll|enterAlways"></com.youth.banner.Banner>-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_scrollFlags="scroll">-->
+            <!--<com.youth.banner.Banner-->
+            <!--android:id="@+id/bn_event"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="170dp"-->
+            <!--app:indicator_width="0dp"-->
+            <!--app:indicator_height="0dp"-->
+            <!--app:scroll_time="500"-->
+            <!--app:title_height="30dp"-->
+            <!--app:layout_scrollFlags="scroll|enterAlways"></com.youth.banner.Banner>-->
             <!--</LinearLayout>-->
             <android.support.design.widget.TabLayout
                 android:id="@+id/tab_event"
@@ -46,5 +50,7 @@
             >
         </android.support.v4.view.ViewPager>
     </android.support.design.widget.CoordinatorLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 
 </LinearLayout>
