@@ -17,6 +17,7 @@ public class OptionDataBean {
     @SerializedName("start_date")private String start_date;
     @SerializedName("end_date")private String end_date;
     @SerializedName("dateWay")private String dateWay;
+    private ArrayList<String> value=new ArrayList<String>();
 
     public String getTitle() {
         return title;
@@ -112,5 +113,13 @@ public class OptionDataBean {
 
     public void setDateWay(String dateWay) {
         this.dateWay = dateWay;
+    }
+
+    public ArrayList<String> getValue() {
+        return value;
+    }
+
+    public void setValue(ArrayList<String> value) {
+        this.value = value;
     }
 }
