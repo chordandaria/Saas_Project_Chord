@@ -21,6 +21,7 @@ public class InfoViewModule extends ViewModel {
     private Context mContext;
     MutableLiveData<FormInfoDataBean> infoData=new MutableLiveData<FormInfoDataBean>();
     MutableLiveData<ArrayList<FormControlsBean>> controls=new MutableLiveData<ArrayList<FormControlsBean>>();
+    MutableLiveData<Integer> pos=new MutableLiveData<Integer>();
 
     public MutableLiveData<FormInfoDataBean> getInfoData() {
         return infoData;
@@ -30,10 +31,15 @@ public class InfoViewModule extends ViewModel {
         return controls;
     }
 
+    public MutableLiveData<Integer> getPos() {
+        return pos;
+    }
+
     public void initViewModule(Context mContext){
         this.mContext=mContext;
         infoData.setValue(new FormInfoDataBean());
         controls.setValue(new ArrayList<FormControlsBean>());
+        pos.setValue(0);
     }
 
     public void requestInfo(int id){
