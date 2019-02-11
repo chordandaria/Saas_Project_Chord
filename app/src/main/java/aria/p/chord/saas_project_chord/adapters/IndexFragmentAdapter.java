@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import aria.p.chord.exam_module.ExamListActivity;
 import aria.p.chord.group_event_module.GroupEventActivity;
 import aria.p.chord.myutilslibrary.IndexIconGridView;
 import aria.p.chord.request_forms_module.FormListActivity;
@@ -126,10 +127,10 @@ public class IndexFragmentAdapter extends RecyclerView.Adapter {
                     intent = new Intent(mContext,GroupEventActivity.class);
 //                    intent.putExtra("id", id);
                     break;
-//                case "exam":
-//                    intent = new Intent(Index.this, EventMain.class);
+                case "exam":
+                    intent = new Intent(mContext, ExamListActivity.class);
 //                    intent.putExtra("type", 1);
-//                    break;
+                    break;
 //                case "vote":
 //                    intent = new Intent(Index.this, Vote_Activity.class);
 //                    intent.putExtra("type", 2);

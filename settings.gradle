@@ -1,1 +1,1 @@
-include ':app', ':Group_Event_Module', ':myutilslibrary', ':request_forms_module'
+include ':app', ':Group_Event_Module', ':myutilslibrary', ':request_forms_module', ':exam_module'

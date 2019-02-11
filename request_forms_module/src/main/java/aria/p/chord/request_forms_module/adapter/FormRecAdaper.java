@@ -200,4 +200,9 @@ public class FormRecAdaper extends RecyclerView.Adapter {
             title=itemView.findViewById(R.id.tv_title);
         }
     }
+
+    public void setmData(ArrayList<FormControlsBean> mData) {
+        this.mData = mData;
+        notifyDataSetChanged();
+    }
 }
