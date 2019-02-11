@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import aria.p.chord.group_event_module.GroupEventActivity;
 import aria.p.chord.myutilslibrary.IndexIconGridView;
+import aria.p.chord.request_forms_module.FormListActivity;
 import aria.p.chord.saas_project_chord.R;
 import aria.p.chord.saas_project_chord.bean.SectionsBean;
 
@@ -133,10 +134,10 @@ public class IndexFragmentAdapter extends RecyclerView.Adapter {
 //                    intent = new Intent(Index.this, Vote_Activity.class);
 //                    intent.putExtra("type", 2);
 //                    break;
-//                case "form":
-//                    intent = new Intent(Index.this, Ivega_Activity.class);
+                case "form":
+                    intent = new Intent(mContext, FormListActivity.class);
 //                    intent.putExtra("type", 3);
-//                    break;
+                    break;
 //                case "cms":
 //                    intent = new Intent(Index.this, cms_Activity.class);
 //                    break;

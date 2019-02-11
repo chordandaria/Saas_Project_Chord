@@ -8,6 +8,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -80,7 +83,9 @@ public class SignRecAdapter extends RecyclerView.Adapter {
                 }
             });
         }else if (viewHolder instanceof ImageViewHolder){
-
+            ImageViewHolder temp= (ImageViewHolder) viewHolder;
+            temp.title.setText(mData.get(pos).getTitle());
+            temp.initGridView(pos);
         }else if (viewHolder instanceof RadioViewHolder){
             RadioViewHolder temp= (RadioViewHolder) viewHolder;
             temp.title.setText(mData.get(pos).getTitle());
@@ -94,7 +99,16 @@ public class SignRecAdapter extends RecyclerView.Adapter {
                 }
             });
         }else if (viewHolder instanceof CheckboxViewHolder){
+            CheckboxViewHolder temp= (CheckboxViewHolder) viewHolder;
+            temp.title.setText(mData.get(pos).getTitle());
+            for (int count=0;count<mData.get(pos).getOptions().size();count++){
+                temp.addButton(count, mData.get(pos).getOptions().get(count), new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
+                    }
+                });
+            }
         }else {
             DescriptViewHolder temp= (DescriptViewHolder) viewHolder;
             temp.title.setText(mData.get(i).getTitle());
@@ -142,6 +156,16 @@ public class SignRecAdapter extends RecyclerView.Adapter {
             imgs=itemView.findViewById(R.id.gv_sign);
             title=itemView.findViewById(R.id.tv_title);
         }
+        public void initGridView(int pos){
+            ImageItemGridAdapter imageItemGridAdapter=new ImageItemGridAdapter(mData.get(pos).getValue(),mContext);
+            imgs.setAdapter(imageItemGridAdapter);
+            imgs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+            });
+        }
     }
 
     class CheckboxViewHolder extends RecyclerView.ViewHolder{
@@ -151,6 +175,13 @@ public class SignRecAdapter extends RecyclerView.Adapter {
             super(itemView);
             title=itemView.findViewById(R.id.tv_title);
             checkbox=itemView.findViewById(R.id.ll_checkbox);
+        }
+        public void addButton(int p, String txt, CompoundButton.OnCheckedChangeListener listener){
+            CheckBox box=new CheckBox(mContext);
+            box.setId(p);
+            box.setText(txt);
+            box.setOnCheckedChangeListener(listener);
+            checkbox.addView(box,p);
         }
     }
 
