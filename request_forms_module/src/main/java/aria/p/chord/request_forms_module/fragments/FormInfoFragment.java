@@ -57,6 +57,7 @@ public class FormInfoFragment extends Fragment {
         joinTime=view.findViewById(R.id.tv_join_time);
         joinCount=view.findViewById(R.id.tv_join_count);
         sign=view.findViewById(R.id.btn_sign);
+        sign.setVisibility(View.VISIBLE);
         WebSettings webSettings=info.getSettings();
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         webSettings.setJavaScriptEnabled(true);

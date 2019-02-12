@@ -3,7 +3,8 @@
     package="aria.p.chord.exam_module">
 
     <application>
-        <activity android:name=".ExamListActivity"></activity>
+        <activity android:name=".ExamListActivity" />
+        <activity android:name=".activity.ExamMainActivity"></activity>
     </application>
 
 </manifest>

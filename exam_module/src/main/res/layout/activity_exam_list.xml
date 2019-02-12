@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExamListActivity">
+    tools:context=".ExamListActivity"
+    android:orientation="vertical">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/sr_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:background="@color/transparent"
+                android:layout_height="wrap_content">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:layout_scrollFlags="scroll">-->
+                <!--<com.youth.banner.Banner-->
+                <!--android:id="@+id/bn_event"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="170dp"-->
+                <!--app:indicator_width="0dp"-->
+                <!--app:indicator_height="0dp"-->
+                <!--app:scroll_time="500"-->
+                <!--app:title_height="30dp"-->
+                <!--app:layout_scrollFlags="scroll|enterAlways"></com.youth.banner.Banner>-->
+                <!--</LinearLayout>-->
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tab_exam"
+                    android:layout_width="match_parent"
+                    app:tabSelectedTextColor="#D44537"
+                    app:tabIndicatorColor="#D44537"
+                    app:tabIndicatorFullWidth="false"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+            </android.support.design.widget.AppBarLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/fl_exam"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="5dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                >
+            </android.support.v4.view.ViewPager>
+        </android.support.design.widget.CoordinatorLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

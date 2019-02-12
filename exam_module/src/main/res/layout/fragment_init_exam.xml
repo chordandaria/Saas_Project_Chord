@@ -2,17 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/rv_form"
+<WebView
+    android:id="@+id/wv_exam"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:layout_weight="1"></android.support.v7.widget.RecyclerView>
+    android:layout_weight="1"></WebView>
     <Button
-        android:id="@+id/btn_sign"
+        android:id="@+id/btn_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/withe"
         android:background="@color/red_holo"
-        android:visibility="gone"
-        android:text="提交"/>
+        android:textColor="@color/withe"
+        android:text="开始答题"/>
 </LinearLayout>
