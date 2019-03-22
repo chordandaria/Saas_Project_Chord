@@ -3,6 +3,7 @@ package aria.p.chord.saas_project_chord
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import aria.p.chord.myutilslibrary.BaseActivity
 import aria.p.chord.myutilslibrary.ShareHelper
 import aria.p.chord.saas_project_chord.Constants.retrofit
 import aria.p.chord.saas_project_chord.bean.LoginBean
@@ -12,11 +13,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        setActoinBarTitle("登录")
         btn_login.setOnClickListener(View.OnClickListener { login() })
     }
 
@@ -36,4 +38,6 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
+
+
 }
