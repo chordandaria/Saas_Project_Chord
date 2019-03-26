@@ -1,10 +1,14 @@
 package aria.p.chord.saas_project_chord
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
 import aria.p.chord.myutilslibrary.BaseActivity
 import aria.p.chord.saas_project_chord.adapters.IndexViewPagerAdapter
@@ -21,6 +25,8 @@ class IndexActivity : BaseActivity() {
     private var titles:ArrayList<String> = ArrayList<String>()
     private var mAdapter: IndexViewPagerAdapter? = null
     private var viewModel: IndexViewModel? = null
+    private var localBroadcastManager:LocalBroadcastManager? =null
+    private var localBroadcastReceiver: LocalReceiver? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_index)
@@ -44,7 +50,6 @@ class IndexActivity : BaseActivity() {
         }
         tl_index.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(p0: TabLayout.Tab?) {
-
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {
@@ -56,6 +61,39 @@ class IndexActivity : BaseActivity() {
             }
         })
 
+        localBroadcastManager= LocalBroadcastManager.getInstance(this@IndexActivity)
+        localBroadcastReceiver= LocalReceiver()
+        localBroadcastReceiver!!.initReceiver(viewModel)
+        localBroadcastManager!!.registerReceiver(localBroadcastReceiver!!, IntentFilter("login"))
 
     }
+
+    override fun onBackPressed() {
+        var backHome :Intent = Intent(Intent.ACTION_MAIN)
+        backHome.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        backHome.addCategory(Intent.CATEGORY_HOME)
+        startActivity(backHome)
+    }
+
+    override fun onDestroy() {
+        localBroadcastManager!!.unregisterReceiver(localBroadcastReceiver!!)
+        super.onDestroy()
+    }
+
+    private class LocalReceiver :BroadcastReceiver(){
+        private var viewModel:IndexViewModel?=null
+
+        fun initReceiver(viewModel: IndexViewModel?){
+            this.viewModel=viewModel
+        }
+
+        override fun onReceive(p0: Context?, p1: Intent?) {
+            if(p1!!.action.equals("login")){
+                viewModel!!.requestIndex()
+                viewModel!!.requestInfo()
+            }
+        }
+
+    }
+
 }

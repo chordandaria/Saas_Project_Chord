@@ -1,5 +1,6 @@
 package aria.p.chord.saas_project_chord.adapters;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -131,10 +132,15 @@ public class IndexFragmentAdapter extends RecyclerView.Adapter {
                     intent = new Intent(mContext, ExamListActivity.class);
 //                    intent.putExtra("type", 1);
                     break;
-//                case "vote":
+                case "vote":
 //                    intent = new Intent(Index.this, Vote_Activity.class);
 //                    intent.putExtra("type", 2);
-//                    break;
+//                    intent= new Intent(Intent.ACTION_MAIN);
+//                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//                    ComponentName cn=new ComponentName("com.shangbanzu.capitalAirport","com.chord.saas_android.Index");
+//                    intent.setComponent(cn);
+//                    intent=mContext.getPackageManager().getLaunchIntentForPackage("com.shangbanzu.capitalAirport");
+                    break;
                 case "form":
                     intent = new Intent(mContext, FormListActivity.class);
 //                    intent.putExtra("type", 3);

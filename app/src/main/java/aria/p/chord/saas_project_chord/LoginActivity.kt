@@ -1,7 +1,9 @@
 package aria.p.chord.saas_project_chord
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import android.view.View
 import aria.p.chord.myutilslibrary.BaseActivity
 import aria.p.chord.myutilslibrary.ShareHelper
@@ -14,12 +16,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : BaseActivity() {
-
+    private var localBroadcastManager:LocalBroadcastManager?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         setActoinBarTitle("登录")
+        localBroadcastManager= LocalBroadcastManager.getInstance(this@LoginActivity)
         btn_login.setOnClickListener(View.OnClickListener { login() })
+
     }
 
     fun login(){
@@ -29,6 +33,7 @@ class LoginActivity : BaseActivity() {
             override fun onResponse(call: Call<LoginBean>?, response: Response<LoginBean>?) {
                 if (response!!.body().isSuccess&&response!!.body().status==200){
                     ShareHelper(this@LoginActivity).auth=response.body().data.token_type+" "+response.body().data.access_token
+                    localBroadcastManager!!.sendBroadcast(Intent("login"))
                     finish()
                 }
             }
@@ -37,6 +42,13 @@ class LoginActivity : BaseActivity() {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
+    }
+
+    override fun onBackPressed() {
+        var backHome :Intent = Intent(Intent.ACTION_MAIN)
+        backHome.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        backHome.addCategory(Intent.CATEGORY_HOME)
+        startActivity(backHome)
     }
 
 

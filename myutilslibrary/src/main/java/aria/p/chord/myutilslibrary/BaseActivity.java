@@ -56,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void commonDestroy(){
+    public void commonDestroy(){
         finish();
     }
 
