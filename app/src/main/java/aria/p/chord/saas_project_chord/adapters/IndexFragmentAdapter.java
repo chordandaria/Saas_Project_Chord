@@ -3,6 +3,8 @@ package aria.p.chord.saas_project_chord.adapters;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -135,10 +138,24 @@ public class IndexFragmentAdapter extends RecyclerView.Adapter {
                 case "vote":
 //                    intent = new Intent(Index.this, Vote_Activity.class);
 //                    intent.putExtra("type", 2);
-//                    intent= new Intent(Intent.ACTION_MAIN);
-//                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
-//                    ComponentName cn=new ComponentName("com.shangbanzu.capitalAirport","com.chord.saas_android.Index");
-//                    intent.setComponent(cn);
+//                    PackageInfo packageInfo =null;
+//                    try {
+//                        packageInfo= mContext.getPackageManager().getPackageInfo("com.shangbanzu.capitalAirport",0);
+//                    } catch (PackageManager.NameNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    if (packageInfo==null){
+//                        Toast.makeText(mContext,"not found",Toast.LENGTH_SHORT).show();
+//                    }else {
+//                        intent= new Intent(Intent.ACTION_MAIN);
+////                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//                        ComponentName cn=new ComponentName("com.shangbanzu.capitalAirport","com.chord.saas_android.Index");
+//                        intent.setComponent(cn);
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    }
+
+
 //                    intent=mContext.getPackageManager().getLaunchIntentForPackage("com.shangbanzu.capitalAirport");
                     break;
                 case "form":
