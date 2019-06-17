@@ -28,18 +28,18 @@ class IndexActivity : BaseActivity() {
     private var viewModel: IndexViewModel? = null
     private var localBroadcastManager:LocalBroadcastManager? =null
     private var localBroadcastReceiver: LocalReceiver? =null
-    private val job = GlobalScope.launch {
-       while(true){
-           if (viewModel == null){
-               delay(2000)
-           }else{
-               viewModel!!.requestIndex()
-               viewModel!!.requestInfo()
-               break
-           }
-       }
-
-    }
+//    private val job = GlobalScope.launch {
+//       while(true){
+//           if (viewModel == null){
+//               delay(2000)
+//           }else{
+//               viewModel!!.requestIndex()
+//               viewModel!!.requestInfo()
+//               break
+//           }
+//       }
+//
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_index)
@@ -49,7 +49,7 @@ class IndexActivity : BaseActivity() {
         var fg_index=IndexFragment()
         var fg_info=InfoFragment()
         viewModel = ViewModelProviders.of(this@IndexActivity).get(IndexViewModel::class.java)
-        viewModel!!.initViewModel(this@IndexActivity)
+        viewModel!!.initViewModel(this@IndexActivity,this@IndexActivity)
 
         fragments.add(fg_index)
         fragments.add(fg_info)
@@ -60,9 +60,9 @@ class IndexActivity : BaseActivity() {
         if (!ShareHelper(this@IndexActivity).checkLogined()) {
             startActivity(Intent(this@IndexActivity,LoginActivity::class.java))
         }else{
-            job.start()
-//            viewModel!!.requestIndex()
-//            viewModel!!.requestInfo()
+//            job.start()
+            viewModel!!.requestIndex()
+            viewModel!!.requestInfo()
         }
         tl_index.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(p0: TabLayout.Tab?) {
@@ -93,7 +93,7 @@ class IndexActivity : BaseActivity() {
 
     override fun onDestroy() {
         localBroadcastManager!!.unregisterReceiver(localBroadcastReceiver!!)
-        job.cancel()
+//        job.cancel()
         super.onDestroy()
     }
 
@@ -110,10 +110,6 @@ class IndexActivity : BaseActivity() {
                 viewModel!!.requestInfo()
             }
         }
-
-    }
-
-    suspend fun requestData(){
 
     }
 

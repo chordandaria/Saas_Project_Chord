@@ -18,11 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         actionBar=getSupportActionBar();
-        UltimateBar.newColorBuilder()
-                .applyNav(false)
-                .statusColor(getColor(R.color.red_holo))
-                .build(this)
-                .apply();
+
         actionBar.setBackgroundDrawable(getDrawable(R.drawable.my_actionbar));
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.my_actionbar);

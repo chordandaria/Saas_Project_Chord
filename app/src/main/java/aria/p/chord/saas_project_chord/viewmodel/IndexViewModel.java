@@ -8,7 +8,12 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import javax.inject.Inject;
+
 import aria.p.chord.myutilslibrary.ShareHelper;
+import aria.p.chord.saas_project_chord.DaggerIndexComponent;
+import aria.p.chord.saas_project_chord.IndexActivity;
+import aria.p.chord.saas_project_chord.IndexComponent;
 import aria.p.chord.saas_project_chord.bean.IndexBean;
 import aria.p.chord.saas_project_chord.bean.InfoBean;
 import aria.p.chord.saas_project_chord.bean.InfoDataBean;
@@ -16,9 +21,12 @@ import aria.p.chord.saas_project_chord.bean.SectionsBean;
 import aria.p.chord.saas_project_chord.bean.SlidersBean;
 import aria.p.chord.saas_project_chord.interfaces.GetIndexData_Interface;
 import aria.p.chord.saas_project_chord.interfaces.GetInfo_Interface;
+import dagger.internal.DaggerCollections;
+import kotlin.jvm.JvmField;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static aria.p.chord.saas_project_chord.Constants.retrofit;
 
@@ -43,7 +51,7 @@ public class IndexViewModel extends ViewModel {
         return infoData;
     }
 
-    public void initViewModel(Context mContext) {
+    public void initViewModel(Context mContext,IndexActivity indexActivity) {
         this.mContext=mContext;
         sliders.setValue(new ArrayList<SlidersBean>());
         sections.setValue(new ArrayList<SectionsBean>());
