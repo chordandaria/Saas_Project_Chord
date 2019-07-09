@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TestHeaderView">
+        <attr name="key_text_color" format="color"></attr>
+        <attr name="value_text_color" format="color"></attr>
+        <attr name="key_align">
+            <flag name="left" value="0x01"></flag>
+            <flag name="right" value="0x02"></flag>
+        </attr>
+        <attr name="key_text" format="string"></attr>
+        <attr name="value_text" format="string"></attr>
+    </declare-styleable>
+</resources>

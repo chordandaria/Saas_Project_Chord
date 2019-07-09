@@ -1,5 +1,6 @@
 package aria.p.chord.saas_project_chord;
 
+
 import javax.inject.Singleton;
 
 import aria.p.chord.myutilslibrary.module.RetrofitModule;
@@ -13,3 +14,4 @@ import dagger.Component;
 public interface IndexComponent {
     void inject(IndexActivity indexActivity);
 }
+

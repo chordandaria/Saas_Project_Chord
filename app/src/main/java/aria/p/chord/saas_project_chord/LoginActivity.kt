@@ -11,6 +11,7 @@ import aria.p.chord.saas_project_chord.Constants.retrofit
 import aria.p.chord.saas_project_chord.bean.LoginBean
 import aria.p.chord.saas_project_chord.interfaces.PostLogin_Interface
 import kotlinx.android.synthetic.main.activity_login.*
+import org.greenrobot.eventbus.EventBus
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,6 +35,7 @@ class LoginActivity : BaseActivity() {
                 if (response!!.body().isSuccess&&response!!.body().status==200){
                     ShareHelper(this@LoginActivity).auth=response.body().data.token_type+" "+response.body().data.access_token
                     localBroadcastManager!!.sendBroadcast(Intent("login"))
+                    EventBus.getDefault().post("login")
                     finish()
                 }
             }

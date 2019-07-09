@@ -10,6 +10,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
+import android.widget.Toast
 import aria.p.chord.myutilslibrary.BaseActivity
 import aria.p.chord.saas_project_chord.adapters.IndexViewPagerAdapter
 
@@ -19,6 +20,9 @@ import aria.p.chord.myutilslibrary.ShareHelper
 import aria.p.chord.saas_project_chord.viewmodel.IndexViewModel
 import kotlinx.android.synthetic.main.activity_index.*;
 import kotlinx.coroutines.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
 class IndexActivity : BaseActivity() {
@@ -26,8 +30,8 @@ class IndexActivity : BaseActivity() {
     private var titles:ArrayList<String> = ArrayList<String>()
     private var mAdapter: IndexViewPagerAdapter? = null
     private var viewModel: IndexViewModel? = null
-    private var localBroadcastManager:LocalBroadcastManager? =null
-    private var localBroadcastReceiver: LocalReceiver? =null
+//    private var localBroadcastManager:LocalBroadcastManager? =null
+//    private var localBroadcastReceiver: LocalReceiver? =null
 //    private val job = GlobalScope.launch {
 //       while(true){
 //           if (viewModel == null){
@@ -43,6 +47,7 @@ class IndexActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_index)
+    EventBus.getDefault().register(this)
         titles.add("首页")
         titles.add("个人信息")
         setActoinBarTitle(titles[0])
@@ -50,7 +55,6 @@ class IndexActivity : BaseActivity() {
         var fg_info=InfoFragment()
         viewModel = ViewModelProviders.of(this@IndexActivity).get(IndexViewModel::class.java)
         viewModel!!.initViewModel(this@IndexActivity,this@IndexActivity)
-
         fragments.add(fg_index)
         fragments.add(fg_info)
         mAdapter= IndexViewPagerAdapter(supportFragmentManager,fragments,titles)
@@ -69,7 +73,6 @@ class IndexActivity : BaseActivity() {
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {
-
             }
 
             override fun onTabSelected(p0: TabLayout.Tab?) {
@@ -77,10 +80,10 @@ class IndexActivity : BaseActivity() {
             }
         })
 
-        localBroadcastManager= LocalBroadcastManager.getInstance(this@IndexActivity)
-        localBroadcastReceiver= LocalReceiver()
-        localBroadcastReceiver!!.initReceiver(viewModel)
-        localBroadcastManager!!.registerReceiver(localBroadcastReceiver!!, IntentFilter("login"))
+//        localBroadcastManager= LocalBroadcastManager.getInstance(this@IndexActivity)
+//        localBroadcastReceiver= LocalReceiver()
+//        localBroadcastReceiver!!.initReceiver(viewModel)
+//        localBroadcastManager!!.registerReceiver(localBroadcastReceiver!!, IntentFilter("login"))
 
     }
 
@@ -92,7 +95,8 @@ class IndexActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        localBroadcastManager!!.unregisterReceiver(localBroadcastReceiver!!)
+//        localBroadcastManager!!.unregisterReceiver(localBroadcastReceiver!!)
+        EventBus.getDefault().unregister(this)
 //        job.cancel()
         super.onDestroy()
     }
@@ -111,6 +115,13 @@ class IndexActivity : BaseActivity() {
             }
         }
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public fun onMessage(event : String){
+        if (event.equals("login")){
+            Toast.makeText(this@IndexActivity,"event",Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
